@@ -1,3 +1,7 @@
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
+
 import sqlite3
 
 
@@ -89,4 +93,4 @@ class Database:
 if __name__ == "__main__":
     Database.create_table_books()
     Database.print_table('books')
-    print(Database.is_unique_value_free('books', 'title', 'Harry Potteyyr'))
+    print(Database.is_unique_value_free('books', 'title', 'Harry'))

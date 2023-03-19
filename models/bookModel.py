@@ -1,5 +1,9 @@
-from database import Database
-from bookData import BookData
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
+
+from models.database import Database
+from models.bookData import BookData
 
 class Book:
 

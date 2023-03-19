@@ -1,4 +1,8 @@
-from database import Database
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
+
+from models.database import Database
 
 class BookData:
     TABLE_NAME: str = "books"
