@@ -26,6 +26,11 @@
 *.sql
 *.sqlite
 
+#python
+
+*.pyc
+__pycache__
+
 # OS generated files #
 ######################
 .DS_Store
@@ -35,3 +40,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
