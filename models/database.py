@@ -39,14 +39,31 @@ class Database:
 
     """Fetch directly from query."""
     @classmethod
-    def query_fetch(cls, query:str, file_name:str = DATABASE_FILE) -> list[tuple]:
+    def query_fetch(cls, query:str, values:tuple =None, file_name:str = DATABASE_FILE) -> list[tuple]:
         conn = sqlite3.connect(file_name)
         cur = conn.cursor()
-        cur.execute(query)
+        if values:
+            cur.execute(query, values)
+        else:
+            cur.execute(query)
         result = cur.fetchall()
         conn.commit()
         cur.close()
         return result
+
+    """Get record by value or empty tuple if record does not exist. If many record with the same value returns first."""
+    @classmethod
+    def get_by_unique_value(cls, table_name:str, value_name:str, value) -> tuple:
+        r = Database.query_fetch(f"SELECT * FROM {table_name} WHERE {value_name} = ?;", (value,))
+        if r:
+            return r[0]
+        else:
+            tuple()
+
+    """Check if unique value is taken by existing entry."""
+    @classmethod
+    def is_unique_value_free(cls, table_name:str, value_name:str, value) -> bool:
+        return not Database.get_by_unique_value(table_name, value_name, value)
 
     """Creates new table if not exists."""
     @classmethod
@@ -72,4 +89,4 @@ class Database:
 if __name__ == "__main__":
     Database.create_table_books()
     Database.print_table('books')
-    print(Database.query_fetch("SELECT count(*) from books where title = 'Harry Potter';")[0][0])
+    print(Database.is_unique_value_free('books', 'title', 'Harry Potteyyr'))
