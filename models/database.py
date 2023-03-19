@@ -89,8 +89,4 @@ class Database:
             print(x)
 
 
-
-if __name__ == "__main__":
-    Database.create_table_books()
-    Database.print_table('books')
-    print(Database.is_unique_value_free('books', 'title', 'Harry'))
+Database.create_table_books()

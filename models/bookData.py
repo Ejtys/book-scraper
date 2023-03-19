@@ -30,10 +30,3 @@ class BookData:
         Database.execute(QUERY, (title, price_cents, description, category, id))
         return True
 
-
-
-
-if __name__ == '__main__':
-    BookData.insert('Harry Potter', 1200, 'Book about magical boy in magical school.', 'fantasy')
-    BookData.insert('Harry Potter 2', 1200, 'Book about magical boy in magical school again.', 'fantasy')
-    print(BookData.update(2,'Harry Potter 2', 1200, 'Book about magical boy returning to magical school.', 'fantasy'))

@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 import requests
 from bs4 import BeautifulSoup
 
-from bookScraper import BookScraper
+from .bookScraper import BookScraper
 from models.bookModel import Book
 
 
@@ -44,6 +44,3 @@ def scrape_all():
         scrape_page_to_db(link)
 
 
-
-if __name__ == '__main__':
-    scrape_all()

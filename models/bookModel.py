@@ -67,8 +67,5 @@ class Book:
             l.append(Book.from_tuple(b))
         return l
 
-if __name__ == '__main__':
-    for b in Book.all():
-        print(b)
 
     

@@ -33,8 +33,3 @@ class BookScraper:
     @property
     def price_cents(self):
         return int(self.price * 100)
-
-if __name__=="__main__":
-    bs = BookScraper('https://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html')
-    print(bs.soup.select_one('p.price_color').string[1:])
-    print(bs.price_cents)
