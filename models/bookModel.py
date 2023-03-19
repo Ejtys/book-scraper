@@ -54,6 +54,7 @@ class Book:
     def is_title_unique(cls, title:str):
         return Database.is_unique_value_free(BookData.TABLE_NAME, 'title', title)
 
+    """Return list of Books from db."""
     @classmethod
     def all(cls) -> list:
         t = Database.fetch_all(BookData.TABLE_NAME)
